@@ -1,16 +1,19 @@
 package com.vitorferreira.springbootmongodb.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 
 import com.vitorferreira.springbootmongodb.dto.AuthorDto;
+import com.vitorferreira.springbootmongodb.dto.CommentDto;
 
-public class Post implements Serializable{
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private Date date;
@@ -21,6 +24,8 @@ public class Post implements Serializable{
 	public Post() {
 
 	}
+
+	public List<CommentDto> comment = new ArrayList<>();
 
 	public Post(String id, Date date, String title, String body, AuthorDto author) {
 		super();
@@ -69,6 +74,14 @@ public class Post implements Serializable{
 
 	public void setAuthor(AuthorDto author) {
 		this.author = author;
+	}
+
+	public List<CommentDto> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<CommentDto> comment) {
+		this.comment = comment;
 	}
 
 	@Override
